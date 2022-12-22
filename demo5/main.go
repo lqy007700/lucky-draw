@@ -74,7 +74,6 @@ func main() {
 		chTasks[i] = make(chan task)
 		go fetchPackageListMoney(i)
 	}
-
 	app := newApp()
 	app.Run(iris.Addr(":8080"))
 }
@@ -90,17 +89,6 @@ func (l *lotteryController) Get() map[uint32][2]int {
 		}
 		res[u] = [2]int{len(uints), money}
 	}
-	//
-	//packageList.Range(func(key, value interface{}) bool {
-	//	money := 0
-	//	id := key.(uint32)
-	//	list := value.([]uint)
-	//	for _, i2 := range list {
-	//		money += int(i2)
-	//	}
-	//	res[id] = [2]int{len(list), money}
-	//	return true
-	//})
 	return res
 }
 
